@@ -1,0 +1,17 @@
+{
+  "name": "css3-sphere",
+  "private": true,
+  "main": [],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "~0.6.0",
+    "fontawesome": "~4.6.3"
+  }
+}

@@ -1,0 +1,102 @@
+body, html{
+}
+main{
+    position: relative;
+}
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+a{
+    cursor: pointer;
+}
+
+/**
+ * Contols
+ */
+ 
+.sphere-controls{
+    padding: 10px;
+}
+.sphere-controls,
+.sphere-controls a,
+.sphere-controls legend{
+    color: rgb(255,255,255);
+}
+.sphere-controls input,
+.sphere-controls button,
+.sphere-controls textarea,
+.sphere-controls select{
+    color: rgb(0,0,0);
+}
+.sphere-controls a{
+    opacity: 0.7;
+}
+.sphere-controls a:hover{
+    opacity: 1;
+}
+a.controls-element{
+    text-decoration: none;
+}
+
+/**
+ * Main Contols (rotate etc)
+ * dim: 40px
+ */
+
+#MainControls{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 140px;
+    height: 140px; /* 3 x dim + 2x padding .sphere-controls*/
+    overflow: visible;
+}
+#MainControls .controls-row{
+    text-align: center;
+}
+#MainControls .controls-row .controls-element{
+    display: inline-block;
+    /* dim! */
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.sphere-classes a{
+    display: inline;
+    line-height: 1em;
+    font-size: 1em;
+    vertical-align: middle;
+}
+
+/**
+ * Popus
+ */
+ 
+.popup{
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 0;
+}
+.popup.popup-left{
+    width: 0;
+    margin-left: -200%;
+    overflow: auto;
+}
+.popup.popup-left.active{
+    height: 100%;
+    width: 50%;
+    margin-left: 0;
+    
+}
+        

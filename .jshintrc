@@ -1,0 +1,14 @@
+{
+    "browser" : true, 
+    "esversion" : 5,
+    "curly": true,
+    "funcscope": true,
+    "undef": true,
+    "unused": true,
+    "jquery": false,
+    "globals": {
+        "console": true,
+        "module": true,
+        "document": true
+    }
+}

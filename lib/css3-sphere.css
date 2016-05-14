@@ -1,0 +1,68 @@
+.scene {
+  margin: 0 auto;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+}
+.scene .sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  transform-style: preserve-3d;
+}
+.scene .container {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out 0s;
+}
+.sphere-row {
+  position: absolute;
+  transform-style: preserve-3d;
+  /*border: 1px solid red;*/
+  height: 100%;
+  width: 100%;
+}
+.sphere-column {
+  position: absolute;
+  display: table;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+.sphere-column .column-content {
+  display: table-cell;
+  vertical-align: middle;
+  /**/
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+/**
+ * default column geoemtries
+ */
+.circles .sphere-column {
+  border-radius: 100px;
+}
+.triangles .sphere-column {
+  box-sizing: border-box;
+  width: 75px;
+  height: 75px;
+  border-top: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-left: 75px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 75px solid transparent;
+  background-color: transparent;
+}
+@keyframes rotateY {
+  to {
+    transform: rotateY(360deg);
+  }
+}

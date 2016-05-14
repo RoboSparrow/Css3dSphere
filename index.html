@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+
+        <title>CSS sphere</title>
+
+        <link rel="stylesheet" href="./bower_components/pure/pure-min.css">
+        <link rel="stylesheet" href="./bower_components/pure/grids-responsive-min.css">
+        <link rel="stylesheet" href="./bower_components/fontawesome/css/font-awesome.min.css">
+<!--
+        <script src="./flickr-feed.js"></script>
+        <script src="./flickr-feed.plugin-batch.js"></script>
+-->        
+        <!-- css3-sphere -->
+        <link rel="stylesheet" href="./lib/css3-sphere.css">
+        <script src="./lib/css3-sphere.js"></script>
+        
+        <!-- page -->
+        <script src="./page/page.js"></script>        
+        <link rel="stylesheet" href="./page/page.css">
+
+    <body>
+
+        <main>
+            <!-- sphere scene -->
+            <div id="Draw3dSphere"></div>
+            
+            <!-- sphere controls -->
+            <section id="MainControls" class="sphere-controls">
+                <div class="controls-row">
+                    <a data-name="rotateX" data-val="-45" class="controls-element rotate fa fa-arrow-up"></a>
+                </div>
+                <div class="controls-row">
+                    <a data-name="rotateY" data-val="-45" class="controls-element rotate fa fa-arrow-left"></a>  
+                    <a class="fa fa-cog js-popup-trigger controls-element" href="#SettingsForm"></a>
+                    <a data-name="rotateY" data-val="45" class="controls-element rotate fa fa-arrow-right"></a>
+                </div>
+                <div class="controls-row">
+                    <a data-name="rotateX" data-val="45" class="controls-element rotate fa fa-arrow-down"></a>
+                </div>
+                <div class="controls-row sphere-classes">
+                    <a data-name="sphereClass" data-val="" class="action fa fa-square"></a>
+                    <a data-name="sphereClass" data-val="circles" class="action fa fa-circle"></a>
+                    <a data-name="sphereClass" data-val="triangles" class="action fa fa-play"></a>
+                    <a data-name="html" data-val="" class="action"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+                    <a data-name="words" data-val="Hello. This is an example of a 3D Css cube." class="action">W</a>
+                </div>
+            </section>
+            
+            <!-- sphere settings form -->
+            <section id="SettingsForm" class="popup popup-left">
+                
+                <form class="pure-form pure-form-aligned sphere-controls">
+                    <fieldset class="text-right">
+                        <a class="fa fa-times js-popup-trigger controls-element" href="#SettingsForm" aria-hidden="true"></a>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Geometry</legend>
+                        <div class="pure-control-group">
+                            <label>Columns</label><input class="change" name="columns" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Rows</label><input class="change" name="rows" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Radius</label><input class="change" name="radius" type="text" value="">
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <Legend>Move</Legend>
+                        <div class="pure-control-group">
+                            <label>X</label><input class="change" name="translateX" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Y</label><input class="change" name="translateY" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Z</label><input class="change" name="translateZ" type="text" value="">
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Rotate</legend>
+                        <div class="pure-control-group">
+                            <label>X</label><input class="change" name="rotateX" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Y</label><input class="change" name="rotateY" type="text" value="">
+                        </div>
+                        <div class="pure-control-group">
+                            <label>Z</label><input class="change" name="rotateZ" type="text" value="">
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Reset</legend>
+                        <div class="pure-control-group">
+                            <button class="action" name="reset" class="controls-element">Reset</button>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>State</legend>
+                        <pre id="json"></pre>
+                    </fieldset>
+
+                </form>
+
+            </section>
+        </main>
+    </body>
+</html>
