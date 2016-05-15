@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var action = this.name || this.dataset.name || false;
         var value = this.value || this.dataset.val || false;
         var node;
-        console.log(this.innerHTML);
+
         switch(action){
             case 'reset':
                 sphere.reset();
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sphere.sphereClass(value);
             break;
             case 'html':
-                sphere.columNode(this.innerHTML);
+                sphere.columContent(this.innerHTML);
             break;
             case 'words':
                 var words = value.split(' ');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     node = document.createElement('div');
                     node.className = "text-center";
                     node.textContent =  (typeof words[i] !== 'undefined' ) ? words[i] : '';
-                    sphere.columNode(node, i);
+                    sphere.columContent(node, i);
                 }
             break;
         }
@@ -116,10 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sphere
     ////
 
-    window.addEventListener('resize', function(){
-    }, true);
-
     var sphere = new Sphere(document.getElementById('Draw3dSphere'));
     updateForms(sphere.state);
     
+    var content = document.querySelectorAll('.sphere-init-content');
+    for(i = 0; i < content.length; i++){
+        sphere.columContent(content[i], i);
+    }
 });
+
+window.addEventListener('resize', function(){
+    //@todo
+}, true);

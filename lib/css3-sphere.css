@@ -20,6 +20,21 @@
   height: 100%;
   transition: transform 1s ease-in-out 0s;
 }
+@keyframes rotateY {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes rotateX {
+  to {
+    transform: rotateX(360deg);
+  }
+}
+@keyframes rotateZ {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
 .sphere-row {
   position: absolute;
   transform-style: preserve-3d;
@@ -35,34 +50,23 @@
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
   overflow: hidden;
 }
 .sphere-column .column-content {
   display: table-cell;
   vertical-align: middle;
-  /**/
   text-align: center;
   height: 100%;
   width: 100%;
 }
-/**
- * default column geoemtries
- */
 .circles .sphere-column {
   border-radius: 100px;
 }
-.triangles .sphere-column {
-  box-sizing: border-box;
-  width: 75px;
-  height: 75px;
-  border-top: 75px solid transparent;
-  border-right: 75px solid transparent;
-  border-left: 75px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 75px solid transparent;
+/* courtesy https://css-tricks.com/examples/ShapesOfCSS/ */
+.moon .sphere-column {
+  color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
-}
-@keyframes rotateY {
-  to {
-    transform: rotateY(360deg);
-  }
+  border-radius: 50%;
+  box-shadow: 33.33333333px 0 0 0 rgba(255, 255, 255, 0.5);
 }

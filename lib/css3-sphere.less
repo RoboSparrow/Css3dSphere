@@ -1,18 +1,41 @@
+////
+// Variables
+////
+
+//scene
+@scene-background-color: rgb(0, 0, 0);
+
+// sphere columns
+@sphere-column-base-color: rgba(255, 255, 255, .5);
+@sphere-column-contrast-color: rgb(0, 0, 0);
+
+// width/height
+@unit-dimension:  100px;
+
+
+////
+// Scene
+////
+
 .scene{
     margin: 0 auto;
-    background-color: rgb(0, 0, 0);
+    background-color: @scene-background-color;
     position: relative;
     overflow: hidden;
 }
+
+////
+// Sphere
+////
 
 .scene .sphere{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100px;
-    height: 100px;
-    margin-top: -50px;
-    margin-left: -50px;
+    width: @unit-dimension;
+    height: @unit-dimension;
+    margin-top: -@unit-dimension/2;
+    margin-left: -@unit-dimension/2;
     transform-style: preserve-3d;
 }
 
@@ -23,6 +46,28 @@
     transition: transform 1s ease-in-out 0s;
 }
 
+// animations
+
+@keyframes rotateY {
+    to {
+        transform: rotateY(360deg);
+    }
+}
+@keyframes rotateX {
+    to {
+        transform: rotateX(360deg);
+    }
+}
+@keyframes rotateZ {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+////
+// Sphere > Rows
+////
+
 .sphere-row{
    position: absolute;
     transform-style: preserve-3d;
@@ -31,48 +76,42 @@
    width: 100%;
 }
 
+////
+// Sphere > Columns
+////
+
 .sphere-column{
    position: absolute;
    display: table;
-   width: 100px;
-   height: 100px;
+   width: @unit-dimension;
+   height: @unit-dimension;
    top: 0;
    left: 0;
-   background-color: rgba(255, 255, 255, .5);
+   background-color: @sphere-column-base-color;
+   color:  @sphere-column-contrast-color;
    overflow: hidden;
 }
+
 .sphere-column .column-content{
    display: table-cell;
-   vertical-align: middle;/**/
+   vertical-align: middle;
    text-align: center;
    height: 100%;
    width: 100%;
 }
 
-/**
- * default column geoemtries
- */
- 
+////
+// Sphere > Column shapes
+////
+
 .circles .sphere-column{
-   border-radius: 100px;
+   border-radius: @unit-dimension;
 }
 
-.triangles .sphere-column{
-	box-sizing: border-box;
-    width: 75px;
-    height: 75px;
-	border-top: 75px solid transparent;
-	border-right: 75px solid transparent;
-	border-left: 75px solid rgba(255, 255, 255, .5);
-    border-bottom: 75px solid transparent;
+/* courtesy https://css-tricks.com/examples/ShapesOfCSS/ */
+.moon .sphere-column{ 
+    color: @sphere-column-base-color;
     background-color: transparent;
-}
-
-
-
-@keyframes rotateY {
-    to {
-        transform: rotateY(360deg);
-    }
-}
-
+    border-radius: 50%; 
+    box-shadow: @unit-dimension/3 0 0 0 @sphere-column-base-color; 
+} 
