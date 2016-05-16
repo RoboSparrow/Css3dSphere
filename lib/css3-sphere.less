@@ -4,6 +4,7 @@
 
 //scene
 @scene-background-color: rgb(0, 0, 0);
+@scene-foreground-color: rgb(255, 255, 255);
 
 // sphere columns
 @sphere-column-base-color: rgba(255, 255, 255, .5);
@@ -87,8 +88,9 @@
    height: @unit-dimension;
    top: 0;
    left: 0;
-   background-color: @sphere-column-base-color;
-   color:  @sphere-column-contrast-color;
+   height: 100%;
+   width: 100%;
+   background-color: transparent;
    overflow: hidden;
 }
 
@@ -96,15 +98,22 @@
    display: table-cell;
    vertical-align: middle;
    text-align: center;
-   height: 100%;
-   width: 100%;
+   height: inherit;
+   width: inherit;
+   background-color: @sphere-column-base-color;
+   color:  @sphere-column-contrast-color;
 }
 
 ////
 // Sphere > Column shapes
 ////
 
-.circles .sphere-column{
+.transparent .column-content{
+   background-color: transparent;
+   color: @sphere-column-base-color;
+}
+
+.circles  .column-content{
    border-radius: @unit-dimension;
 }
 
@@ -114,4 +123,38 @@
     background-color: transparent;
     border-radius: 50%; 
     box-shadow: @unit-dimension/3 0 0 0 @sphere-column-base-color; 
+}
+.moon .column-content{
+    background-color: transparent;
+    color: @sphere-column-base-color;
+}
+
+//heart
+//@TODO coor html content
+
+.heart .column-content { 
+    position: relative; 
+    width: 100px; 
+    height: 90px;
+    background-color: transparent; 
+    z-index: 100;
 } 
+.heart .column-content:before, 
+.heart .column-content:after { 
+    position: absolute; 
+    content: ""; 
+    left: 50px; 
+    top: 0; 
+    width: 50px; 
+    height: 80px; 
+    background: @sphere-column-base-color; 
+    border-radius: 50px 50px 0 0; 
+    transform: rotate(-45deg);
+    transform-origin: 0 100%; 
+    z-index: 90;
+} 
+.heart .column-content:after { 
+    left: 0; 
+    transform: rotate(45deg); 
+    transform-origin :100% 100%;
+}

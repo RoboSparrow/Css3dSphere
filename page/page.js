@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             break;
             case 'html':
                 sphere.columContent(this.innerHTML);
+                sphere.sphereClass('transparent');
             break;
             case 'words':
                 var words = value.split(' ');

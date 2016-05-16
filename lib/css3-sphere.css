@@ -49,18 +49,25 @@
   height: 100px;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #000000;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
   overflow: hidden;
 }
 .sphere-column .column-content {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  height: 100%;
-  width: 100%;
+  height: inherit;
+  width: inherit;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
 }
-.circles .sphere-column {
+.transparent .column-content {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
+.circles .column-content {
   border-radius: 100px;
 }
 /* courtesy https://css-tricks.com/examples/ShapesOfCSS/ */
@@ -69,4 +76,34 @@
   background-color: transparent;
   border-radius: 50%;
   box-shadow: 33.33333333px 0 0 0 rgba(255, 255, 255, 0.5);
+}
+.moon .column-content {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
+.heart .column-content {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  background-color: transparent;
+  z-index: 100;
+}
+.heart .column-content:before,
+.heart .column-content:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  z-index: 90;
+}
+.heart .column-content:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
 }
