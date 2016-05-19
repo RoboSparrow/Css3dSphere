@@ -35,6 +35,11 @@
     transform: rotateZ(360deg);
   }
 }
+.sphere-centre {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 .sphere-row {
   position: absolute;
   transform-style: preserve-3d;

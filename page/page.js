@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Controls
     ////
     
+    //// sidebar
+    
     var updateForms = function(state){
         var form = document.getElementById('SettingsForm');
         var nodes = form.querySelectorAll('[name]');
@@ -47,15 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
     for(i = 0; i < els.length; i++){
         els[i].addEventListener('change', eventCallback, false);
     }
-
+    
+    //// rotate
+    
     els = document.querySelectorAll('.rotate');
     eventCallback = function(e){
         e.preventDefault();
-        var vals = {
-            animation: null,
-        };
-        vals[e.target.dataset.name] = sphere.state[e.target.dataset.name] + parseInt(e.target.dataset.val, 10);
-        sphere.updateState(vals);
+    
+        var val = sphere.state[e.target.dataset.name] + parseInt(e.target.dataset.val, 10);
+        sphere.sphereTransforms(e.target.dataset.name, val);
+        
         updateForms(sphere.state);
     };
 
@@ -63,20 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         els[i].addEventListener('click', eventCallback, false);
     }
     
-    els = document.querySelectorAll('.rotate');
-    eventCallback = function(e){
-        e.preventDefault();
-        var vals = {
-            animation: null,
-        };
-        vals[e.target.dataset.name] = sphere.state[e.target.dataset.name] + parseInt(e.target.dataset.val, 10);
-        sphere.updateState(vals);
-        updateForms(sphere.state);
-    };
-
-    for(i = 0; i < els.length; i++){
-        els[i].addEventListener('click', eventCallback, false);
-    }
+    //// shapes and content
     
     els = document.querySelectorAll('.action');
     eventCallback = function(e){
@@ -101,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var words = value.split(' ');
                 for(i = 0; i < sphere.nodes.columns.length; i++){
                     node = document.createElement('div');
-                    node.className = "text-center";
+                    node.className = 'text-center';
                     node.textContent =  (typeof words[i] !== 'undefined' ) ? words[i] : '';
                     sphere.columContent(node, i);
                 }
@@ -118,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ////
 
     var sphere = new Sphere(document.getElementById('Draw3dSphere'));
+    sphere.coordinates();
     updateForms(sphere.state);
     
     var content = document.querySelectorAll('.sphere-init-content');
