@@ -2,10 +2,8 @@
 
 * A variation of [PaulHeye's excellent segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
 
-License: MIT
-
-Note that this is a playground and not as a serious project. Anything can change (and break). I and may not provide active support and maintenace.
-I appreciate however suggestions and pull requests if you think things can be done better.
+License: MIT. Note that this is a playground and not as a serious project. Anything can change (and break). I may not provide active support and maintenace.
+I appreciate however suggestions and pull requests, if you think things can be done better.
 
 ##Features:
 
@@ -189,7 +187,7 @@ Some node references are stored for your cunning manipulations in the `sphere.no
 * `sphere.nodes.columns`: An array holding the segments of the sphere.
 
 Of all these the `sphere.nodes.columns` array will be the most interesting when you want to populate the sphere with your content.
-See `sphere.columContent()` for details
+See `sphere.columContent()` for details.
 
 Schema of the DOM structure:
 
