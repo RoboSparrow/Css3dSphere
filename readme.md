@@ -1,6 +1,6 @@
 # Interactive Html5 Sphere
 
-A variation of [PaulHeye's segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
+* A variation of [PaulHeye's excellent segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
 
 License: MIT
 
@@ -9,11 +9,11 @@ I appreciate however suggestions and pull requests if you think things can be do
 
 ##Features:
 
-* edit geomerty params
+* edit basic geometry parameters
 * move, rotate sphere
 * animations
 * css shapes
-* insert html content in segments
+* insert html content in sphere segments
 * insert html content in sphere centre
 
 ## Browser support
