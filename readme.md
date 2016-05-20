@@ -77,7 +77,7 @@ Editable state properties:
 ```
 var state = {
     columns: 12,
-    rows: 6,                    // colums/ rows relation should be 2:1 for best results
+    rows: 6,                    // colums/rows relation should be 2:1 for best results!
     radius: 300,                // sphere radius (px)
     translateX: 0,              // move sphere (px)
     translateY: 0,              // move sphere (px)
@@ -90,7 +90,7 @@ var state = {
 }
 ```
 
-### load defaults
+### Load defaults
 
 * `sphere.reset();`
 
@@ -214,7 +214,7 @@ Schema of the DOM structure:
 `sphere.columContent(content, index);`
 
 * `content`: node or html string
-* `index`: A single segment. Attaches conent to all segments if not set or -1
+* `index`: A single segment. Attaches content to all segments if not set or `-1`
 
 Index refers to the `sphere.nodes.columns` node array.
 
