@@ -1,2 +1,218 @@
+# Interactive Html5 Sphere
 
 A variation of [PaulHeye's segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
+
+License: MIT
+Note that this is a playground and not as a serious project. Anything can change (anbreak) and I and may not provide active support and maintenace.
+I appreciate however suggestions and pull requests if you think things can be done better.
+
+##Features:
+
+* edit geomerty params
+* move, rotate sphere
+* animations
+* css shapes
+* insert html content in segments
+* insert html content in sphere centre
+
+## Browser support
+* [See here] (http://caniuse.com/#feat=transforms3d)
+Modern browsers who understand es5 and css 3d transforms. 
+This will **NOT work with IE <= 11**! (no `preserve-3d` support)
+
+## Create Sphere
+
+```
+var sphere = new Sphere(document.getElementById('MyWrapper'));
+``
+
+## Update params 
+
+`sphere.updateState(stateObject);`
+
+* `stateObject`: an object with properties to be updated.
+
+```
+sphere.updateState({
+    radius: 600,   
+    animation: null,
+    rotateY: 90
+});
+
+```
+
+`sphere.updateState` triggers a complete re-render of the Sphere. See also `sphere.sphereTransforms` for less exhaustive transformations of an existing sphere.
+
+Editable state properties: 
+
+```
+var state = {
+    columns: 12,
+    rows: 6,                    // colums/ rows relation should be 2:1 for best results
+    radius: 300,                // sphere radius (px)
+    translateX: 0,              // move sphere (px)
+    translateY: 0,              // move sphere (px)
+    translateZ: 0,              // move sphere (px)
+    rotateX: 0,                 // rotate sphere (deg)
+    rotateY: 0,                 // rotate sphere (deg)
+    rotateZ: 0,                 // rotate sphere (deg) 
+    animation: 'rotateY',       // animate spere: null (no animation), 'rotateXn',  'rotateY',  'rotateZ' , @see css3-sphere.css for animations
+    sphereClass: 'circles',     // segment shapes (classNAmes) @see css3-sphere.css for shape classes 
+}
+```
+
+### load defaults
+
+* `sphere.reset();`
+
+## Move Sphere
+
+* `sphere.sphereTransforms(propertyName, distance);`
+
+* `propertyName`: transform property (must be defined in state defaults)
+* `distance`: distance in pixels (number)
+
+```
+// move 300px to right
+sphere.sphereTransforms('translateX', 300);
+
+// move 300px to top
+sphere.sphereTransforms('translateX', -300);
+
+// move 300px to front
+sphere.sphereTransforms('translateZ', -300);
+```
+
+## Rotate Sphere
+
+`sphere.sphereTransforms(propertyName, angle);`
+
+* `propertyName`: transform property (must be defined in state defaults)
+* `angle`: angle in degrees (number)
+
+```
+// rotate 30 degrees up
+sphere.sphereTransforms('rotateX', 30);
+
+// rotate 30 degrees down
+sphere.sphereTransforms('rotateX', -30);
+
+// rotate 30 degrees left
+sphere.sphereTransforms('rotateY', -30);
+
+// rotate 30 degrees right
+sphere.sphereTransforms('rotateY', 30);
+
+// spin 30 degrees left
+sphere.sphereTransforms('rotateZ', -30);
+
+// spin 30 degrees right
+sphere.sphereTransforms('rotateZ', 30);
+
+```
+
+## Animate Sphere
+
+```
+sphere.sphereAnimation(animationClass|null);
+```
+
+* `animationClass`: See `css3-sphere.css` for available animation classes or define your own
+* Stop an animation by simply submitting `null`.
+
+```
+sphere.sphereAnimation('rotateX');
+sphere.sphereAnimation('rotateY');
+sphere.sphereAnimation('rotateZ');
+
+//stop
+sphere.sphereAnimation(null);
+
+```
+
+## Style Segments
+
+This method attaches simply a css class to the sphere so 
+
+`sphere.sphereClass(className);`
+
+* `className`: You can define your own classes or use those in `css3-sphere.css`
+
+```
+// circles
+sphere.sphereClass('cirles');
+
+// transparent segments
+sphere.sphereClass('transparent');
+
+// default (sqaures)
+sphere.sphereClass('');
+```
+
+## Node manipulation
+
+Some node references are stored for your cunning manipulations in the `sphere.nodes` property.
+
+* `sphere.nodes.scene`: internal wrapper created by sphere
+* `sphere.nodes.sphere`: sphere parent
+* `sphere.nodes.centre`: Centre node (by default empty)
+* `sphere.nodes.columns`: An array holding the segments of the sphere.
+
+Of all these the `sphere.nodes.columns` array will be the most interesting when you want to populate the sphere with your content.
+See `sphere.columContent()` for details
+
+Schema of the DOM structure:
+
+```
+<div class="sphere">
+    <div class="container">
+        <div class="sphere-centre"></div>
+         <div class="sphere-row row-0">
+             <div class="sphere-column row-0 col-0">
+                 <div class="column-content"></div>
+             </div>
+             ... more columns
+         </div>
+         ... more rows
+    </div>
+</div>
+```
+
+
+## Attach content
+
+### Segments
+
+`sphere.columContent(content, index);`
+
+* `content`: node or html string
+* `index`: A single segment. Attaches conent to all segments if not set or -1
+
+Index refers to the `sphere.nodes.columns` node array.
+
+```
+// content - node example
+var node = document.CreateElement('img');
+node.className = 'my-class';
+node.src = 'http://my-image-url';
+
+// content - html example
+var html = '<div class="my-class"><a href="http://my-link">My link</a></div>';
+
+// attach to all segments
+sphere.columContent(node);
+
+// attach to specific segment
+sphere.columContent(html, 3);
+```
+
+### Sphere centre
+
+`sphere.centreContent(content);`
+
+* `content`: node or html string
+
+```
+sphere.centreContent('<h1>My Content</h1>');
+```
+

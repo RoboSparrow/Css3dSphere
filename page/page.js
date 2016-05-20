@@ -11,8 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var popupCallback = function(e){
         e.preventDefault();
+        
         var id = e.target.getAttribute('href').substring(1); //#
-        document.getElementById(id).classList.toggle('active');
+        var src = document.getElementById(id);
+        src.classList.toggle('active');
+        if(id === 'SettingsForm'){
+            if(src.classList.contains('active')){
+                sphere.cache.set('animation', sphere.state.animation);
+                sphere.sphereAnimation(null);
+            }else{
+                sphere.sphereAnimation(sphere.cache.get('animation'));
+            }
+        }
     };
     
     var triggers = document.querySelectorAll('.js-popup-trigger');
@@ -41,8 +51,24 @@ document.addEventListener('DOMContentLoaded', function() {
     els = document.querySelectorAll('.change');
     eventCallback = function(e){
         var vals = {};
-        vals[e.target.name] = e.target.value;
-        sphere.updateState(vals);
+        var val;
+        var method = e.target.dataset.method || 'updateState';
+        
+        switch (method){
+            case 'updateState':
+                vals[e.target.name] = e.target.value;
+                sphere.updateState(vals);
+            break;
+            case 'sphereTransforms':
+                val = parseInt(e.target.value, 10);
+                if(isNaN(val)){
+                    return false;
+                }
+                sphere.sphereTransforms(e.target.name,  val);
+            break;
+            default:
+                //nothing
+        }
         updateForms(sphere.state);
     };
 
@@ -108,12 +134,14 @@ document.addEventListener('DOMContentLoaded', function() {
     ////
 
     var sphere = new Sphere(document.getElementById('Draw3dSphere'));
-    sphere.coordinates();
+    //sphere.coordinates();
+    sphere.centreContent('<h1>Css Sphere</h1>');
     updateForms(sphere.state);
     
+    var cols = sphere.state.columns - 1;
     var content = document.querySelectorAll('.sphere-init-content');
     for(i = 0; i < content.length; i++){
-        sphere.columContent(content[i], i);
+        sphere.columContent(content[i], cols - i);
     }
 });
 
