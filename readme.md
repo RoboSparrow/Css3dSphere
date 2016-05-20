@@ -20,10 +20,38 @@ I appreciate however suggestions and pull requests if you think things can be do
 Modern browsers who understand es5 and css 3d transforms. 
 This will **NOT work with IE <= 11**! (no `preserve-3d` support)
 
+## Setup
+
+Include `css3-sphere.js` and `css3-sphere.css` in your page.
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+
+        <title>CSS sphere</title>
+
+        <!-- sphere -->
+        <link rel="stylesheet" href="./lib/css3-sphere.css">
+        <script src="./lib/css3-sphere.js"></script>
+        
+        <script>
+            var sphere = new Sphere(document.getElementById('MySphere'));
+            // now you can do things with your sphere
+        </script>        
+
+    <body>
+        <!-- sphere wrapper -->
+        <div id="MySphere"></div>
+    </body>
+</html>
+```
+
 ## Create Sphere
 
 ```
-var sphere = new Sphere(document.getElementById('MyWrapper'));
+var sphere = new Sphere(document.getElementById('MySphere'));
 ``
 
 ## Update params 
