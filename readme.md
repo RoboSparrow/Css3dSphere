@@ -7,7 +7,7 @@ I appreciate however suggestions and pull requests, if you think things can be d
 
 ##Features:
 
-* edit basic geometry parameters
+* configure basic geometry parameters
 * move, rotate sphere
 * animations
 * css shapes
@@ -72,7 +72,7 @@ sphere.updateState({
 
 `sphere.updateState` triggers a complete re-render of the Sphere. See also `sphere.sphereTransforms` for less exhaustive transformations of an existing sphere.
 
-Editable state properties: 
+Configurable state properties: 
 
 ```
 var state = {
@@ -242,4 +242,25 @@ sphere.columContent(html, 3);
 
 ```
 sphere.centreContent('<h1>My Content</h1>');
+```
+
+# Cache
+
+The `sphere` instance contains a very basic cache for temporarily storing (state) properties.
+
+Example:
+
+```
+//stop animation and store current
+sphere.cache.set('animation', sphere.state.animation);
+sphere.sphereAnimation(null);
+
+//resume animation
+sphere.sphereAnimation(sphere.cache.get('animation'));
+
+//remove property
+sphere.cache.purge('animation');
+
+//purge all
+sphere.cache.purge();
 ```
