@@ -3,7 +3,8 @@
 A variation of [PaulHeye's segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
 
 License: MIT
-Note that this is a playground and not as a serious project. Anything can change (anbreak) and I and may not provide active support and maintenace.
+
+Note that this is a playground and not as a serious project. Anything can change (and break). I and may not provide active support and maintenace.
 I appreciate however suggestions and pull requests if you think things can be done better.
 
 ##Features:
@@ -16,7 +17,9 @@ I appreciate however suggestions and pull requests if you think things can be do
 * insert html content in sphere centre
 
 ## Browser support
+
 * [See here] (http://caniuse.com/#feat=transforms3d)
+
 Modern browsers who understand es5 and css 3d transforms. 
 This will **NOT work with IE <= 11**! (no `preserve-3d` support)
 
@@ -52,7 +55,7 @@ Include `css3-sphere.js` and `css3-sphere.css` in your page.
 
 ```
 var sphere = new Sphere(document.getElementById('MySphere'));
-``
+```
 
 ## Update params 
 
@@ -96,7 +99,6 @@ var state = {
 ## Move Sphere
 
 * `sphere.sphereTransforms(propertyName, distance);`
-
 * `propertyName`: transform property (must be defined in state defaults)
 * `distance`: distance in pixels (number)
 
@@ -243,4 +245,3 @@ sphere.columContent(html, 3);
 ```
 sphere.centreContent('<h1>My Content</h1>');
 ```
-
