@@ -39,9 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var updateForms = function(state){
         var form = document.getElementById('SettingsForm');
         var nodes = form.querySelectorAll('[name]');
+        var output;
         for(var i = 0; i < nodes.length; i++){
             if(sphere.state.hasOwnProperty(nodes[i].name)){
                 nodes[i].value = state[nodes[i].name];
+                output = document.querySelector('output[for=' + nodes[i].name + ']');
+                if(output){
+                    output.textContent = state[nodes[i].name];
+                }
             }
         }
 

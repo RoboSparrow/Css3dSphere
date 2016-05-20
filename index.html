@@ -59,38 +59,56 @@
                     <fieldset>
                         <legend>Geometry</legend>
                         <div class="pure-control-group">
-                            <label>Columns</label><input class="change" name="columns" type="text" value="">
+                            <label>Columns</label>
+                            <input name="columns" class="change" type="range" min="6" max="30"/>
+                            <output for="columns"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Rows</label><input class="change" name="rows" type="text" value="">
+                            <label>Rows</label>
+                            <input name="rows" class="change" type="range" min="3" max="15"/>
+                            <output for="rows"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Radius</label><input class="change" name="radius" type="text" value="">
+                            <label>Radius</label>
+                            <input name="radius" class="change" type="range" min="50" max="600"/>
+                            <output for="radius"></output>
                         </div>
                     </fieldset>
                     <fieldset>
                         <Legend>Move</Legend>
                         <div class="pure-control-group">
-                            <label>X</label><input class="change" data-method="sphereTransforms" name="translateX" type="text" value="">
+                            <label>X</label>
+                            <input data-method="sphereTransforms" name="translateX" class="change" type="range" min="-300" max="300"/>
+                            <output for="translateX"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Y</label><input class="change" data-method="sphereTransforms" name="translateY" type="text" value="">
+                            <label>Y</label>
+                            <input data-method="sphereTransforms" name="translateY" class="change" type="range" min="-300" max="300"/>
+                            <output for="translateY"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Z</label><input class="change" data-method="sphereTransforms" name="translateZ" type="text" value="">
+                            <label>Z</label>
+                            <input data-method="sphereTransforms" name="translateZ" class="change" type="range" min="-600" max="600"/>
+                            <output for="translateZ"></output>
                         </div>
                     </fieldset>
                     
                     <fieldset>
                         <legend>Rotate</legend>
                         <div class="pure-control-group">
-                            <label>X</label><input class="change" data-method="sphereTransforms" name="rotateX" type="text" value="">
+                            <label>X</label>
+                            <input class="change" data-method="sphereTransforms" name="rotateX" step="30" type="range" min="-360" max="360"/>
+                            <output for="rotateX"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Y</label><input class="change" data-method="sphereTransforms" name="rotateY" type="text" value="">
+                            <label>Y</label>
+                            <input class="change" data-method="sphereTransforms" name="rotateY" step="30" type="range" min="-360" max="360"/>
+                            <output for="rotateY"></output>
                         </div>
                         <div class="pure-control-group">
-                            <label>Z</label><input class="change" data-method="sphereTransforms" name="rotateZ" type="text" value="">
+                            <label>Z</label>
+                            <input class="change" data-method="sphereTransforms" name="rotateZ" step="30" type="range" min="-360" max="360"/>
+                            <output for="rotateZ"></output>
                         </div>
                     </fieldset>
                     

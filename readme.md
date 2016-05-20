@@ -246,7 +246,8 @@ sphere.centreContent('<h1>My Content</h1>');
 
 # Cache
 
-The `sphere` instance contains a very basic cache for temporarily storing (state) properties.
+The `sphere` instance contains a very basic cache for temporarily storing (state) properties. 
+You need to invoke this manually.
 
 Example:
 
