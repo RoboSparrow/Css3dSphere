@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sphere.sphereClass(value);
             break;
             case 'html':
-                sphere.columContent(this.innerHTML);
+                sphere.columnContent(this.innerHTML);
                 sphere.sphereClass('transparent');
             break;
             case 'words':
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     node = document.createElement('div');
                     node.className = 'text-center';
                     node.textContent =  (typeof words[i] !== 'undefined' ) ? words[i] : '';
-                    sphere.columContent(node, i);
+                    sphere.columnContent(node, i);
                 }
             break;
         }
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var cols = sphere.state.columns - 1;
     var content = document.querySelectorAll('.sphere-init-content');
     for(i = 0; i < content.length; i++){
-        sphere.columContent(content[i], cols - i);
+        sphere.columnContent(content[i], cols - i);
     }
 });
 

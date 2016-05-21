@@ -187,7 +187,7 @@ Some node references are stored for your cunning manipulations in the `sphere.no
 * `sphere.nodes.columns`: An array holding the segments of the sphere.
 
 Of all these the `sphere.nodes.columns` array will be the most interesting when you want to populate the sphere with your content.
-See `sphere.columContent()` for details.
+See `sphere.columnContent()` for details.
 
 Schema of the DOM structure:
 
@@ -211,7 +211,7 @@ Schema of the DOM structure:
 
 ### Segments
 
-`sphere.columContent(content, index);`
+`sphere.columnContent(content, index);`
 
 * `content`: node or html string
 * `index`: A single segment. Attaches content to all segments if not set or `-1`
@@ -228,10 +228,10 @@ node.src = 'http://my-image-url';
 var html = '<div class="my-class"><a href="http://my-link">My link</a></div>';
 
 // attach to all segments
-sphere.columContent(node);
+sphere.columnContent(node);
 
 // attach to specific segment
-sphere.columContent(html, 3);
+sphere.columnContent(html, 3);
 ```
 
 ### Sphere centre
