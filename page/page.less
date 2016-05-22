@@ -1,4 +1,6 @@
 body, html{
+    height: 100%;
+    bacground-color: rgb(0,0,0);
 }
 main{
     position: relative;
@@ -68,11 +70,16 @@ a.controls-element{
     vertical-align: middle;
 }
 
+.controls-row.sphere-classes{
+    margin-top: 1em;
+}
+
 .sphere-classes a{
     display: inline;
-    line-height: 1em;
-    font-size: 1em;
+    line-height: 1.5em;
+    font-size: 1.5em;
     vertical-align: middle;
+    margin: 5px;
 }
 
 /**
@@ -97,4 +104,21 @@ a.controls-element{
     height: 100%;
     width: 50%;
     margin-left: 0;
+}
+
+//// flickr
+.flickr-feed-item{
+    margin: 0;
+    padding: 0;
+}
+.flickr-feed-item img{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+}
+
+.sphere-column .show{
+border: 5px solid green;
+//transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)!important;
+
 }

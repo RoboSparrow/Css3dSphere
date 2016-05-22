@@ -20,26 +20,37 @@
   height: 100%;
   transition: transform 1s ease-in-out 0s;
 }
+.rotateY {
+  animation: rotateY 25s infinite linear;
+  -webkit-animation: rotateY 25s infinite linear;
+}
 @keyframes rotateY {
   to {
     transform: rotateY(360deg);
   }
+}
+.rotateX {
+  animation: rotateX 25s infinite linear;
+  -webkit-animation: rotateX 25s infinite linear;
 }
 @keyframes rotateX {
   to {
     transform: rotateX(360deg);
   }
 }
+.rotateZ {
+  animation: rotateZ 25s infinite linear;
+  -webkit-animation: rotateZ 25s infinite linear;
+}
 @keyframes rotateZ {
   to {
     transform: rotateZ(360deg);
   }
 }
-.sphere-centre {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  color: #ffffff;
+.paused {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
 }
 .sphere-row {
   position: absolute;
@@ -51,23 +62,38 @@
 .sphere-column {
   position: absolute;
   display: table;
-  width: 100px;
-  height: 100px;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   background-color: transparent;
   overflow: hidden;
+  transition: transform 1s ease-in-out 0s;
 }
 .sphere-column .column-content {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   background-color: rgba(255, 255, 255, 0.5);
   color: #000000;
+}
+.sphere-centre {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+}
+.sphere-centre .centre-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 .transparent .column-content {
   background-color: transparent;
@@ -86,30 +112,4 @@
 .moon .column-content {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
-}
-.heart .column-content {
-  position: relative;
-  width: 100px;
-  height: 90px;
-  background-color: transparent;
-  z-index: 100;
-}
-.heart .column-content:before,
-.heart .column-content:after {
-  position: absolute;
-  content: "";
-  left: 50px;
-  top: 0;
-  width: 50px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50px 50px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-  z-index: 90;
-}
-.heart .column-content:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
 }

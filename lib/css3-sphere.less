@@ -13,7 +13,6 @@
 // width/height
 @unit-dimension:  100px;
 
-
 ////
 // Scene
 ////
@@ -48,16 +47,29 @@
 }
 
 // animations
-
+.rotateY{
+    animation: rotateY 25s infinite linear;
+    -webkit-animation: rotateY 25s infinite linear;
+}
 @keyframes rotateY {
     to {
         transform: rotateY(360deg);
     }
 }
+
+.rotateX{
+    animation: rotateX 25s infinite linear;
+    -webkit-animation: rotateX 25s infinite linear;
+}
 @keyframes rotateX {
     to {
         transform: rotateX(360deg);
     }
+}
+
+.rotateZ{
+    animation: rotateZ 25s infinite linear;
+    -webkit-animation: rotateZ 25s infinite linear;
 }
 @keyframes rotateZ {
     to {
@@ -65,15 +77,10 @@
     }
 }
 
-////
-// Sphere > Centre
-////
-
-.sphere-centre{
-   position: absolute;
-   height: 100%;
-   width: 100%;
-   color: @scene-foreground-color
+.paused{
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
 }
 
 ////
@@ -95,24 +102,44 @@
 .sphere-column{
    position: absolute;
    display: table;
-   width: @unit-dimension;
-   height: @unit-dimension;
    top: 0;
    left: 0;
    height: 100%;
    width: 100%;
    background-color: transparent;
    overflow: hidden;
+   transition: transform 1s ease-in-out 0s;
 }
 
 .sphere-column .column-content{
    display: table-cell;
    vertical-align: middle;
    text-align: center;
-   height: inherit;
-   width: inherit;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
    background-color: @sphere-column-base-color;
    color:  @sphere-column-contrast-color;
+}
+
+////
+// Sphere > Centre
+////
+
+.sphere-centre{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: @scene-foreground-color;
+}
+.sphere-centre .centre-content{
+   display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
 }
 
 ////
@@ -140,32 +167,3 @@
     color: @sphere-column-base-color;
 }
 
-//heart
-//@TODO coor html content
-
-.heart .column-content { 
-    position: relative; 
-    width: 100px; 
-    height: 90px;
-    background-color: transparent; 
-    z-index: 100;
-} 
-.heart .column-content:before, 
-.heart .column-content:after { 
-    position: absolute; 
-    content: ""; 
-    left: 50px; 
-    top: 0; 
-    width: 50px; 
-    height: 80px; 
-    background: @sphere-column-base-color; 
-    border-radius: 50px 50px 0 0; 
-    transform: rotate(-45deg);
-    transform-origin: 0 100%; 
-    z-index: 90;
-} 
-.heart .column-content:after { 
-    left: 0; 
-    transform: rotate(45deg); 
-    transform-origin :100% 100%;
-}

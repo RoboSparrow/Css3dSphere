@@ -20,6 +20,11 @@ module.exports = function(grunt) {
                 options: {
                     paths: ['']
                 },
+                plugins: [
+                    new (require('less-plugin-autoprefix'))({
+                        browsers: ["last 2 versions"]
+                    })
+                ],
                 files: [
                     {
                         src: ['lib/*.less', '!{fonts, variable, mixins}*.less'],
@@ -36,7 +41,7 @@ module.exports = function(grunt) {
         // jshint: specify your preferred options in 'globals'
         // http://jshint.com/docs/options/
         jshint: {
-            files: ['Gruntfile.js', 'lib/<%= pkg.name %>.js', 'page/**/*.js'],
+            files: ['Gruntfile.js', 'lib/<%= pkg.name %>.js', 'page/**/*.js', '!page/vendor/**'],
             options: {
                 jshintrc: true
             }

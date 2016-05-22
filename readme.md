@@ -257,7 +257,7 @@ sphere.cache.set('animation', sphere.state.animation);
 sphere.sphereAnimation(null);
 
 //resume animation
-sphere.sphereAnimation(sphere.cache.get('animation'));
+sphere.sphereAnimation(sphere.cache.get('animation', null));
 
 //remove property
 sphere.cache.purge('animation');
