@@ -134,11 +134,12 @@ var Page = (function() {
                     var words = value.split(' ');
                     for(i = 0; i < sphere.nodes.columns.length; i++){
                         node = document.createElement('div');
-                        node.className = 'text-center';
+                        node.className = 'text-center text';
                         node.textContent =  (typeof words[i] !== 'undefined' ) ? words[i] : '';
                         sphere.columnContent(node, i);
                     }
                     sphere.centreContent(null);
+                    sphere.sphereClass('transparent');
                 break;
                 case 'flickr':
                     flickrSphere(sphere);

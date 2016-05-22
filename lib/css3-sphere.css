@@ -52,13 +52,6 @@
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
 }
-.sphere-row {
-  position: absolute;
-  transform-style: preserve-3d;
-  /*border: 1px solid red;*/
-  height: 100%;
-  width: 100%;
-}
 .sphere-column {
   position: absolute;
   display: table;
