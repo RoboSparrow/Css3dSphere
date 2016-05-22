@@ -51,11 +51,25 @@ Include `css3-sphere.js` and `css3-sphere.css` in your page.
 
 ## Create Sphere
 
+`new Sphere(node, options);`
+
+* `node`: Dom node (block element)
+* `options`: object, your initial state properties, see `stateObject` below
+
 ```
 var sphere = new Sphere(document.getElementById('MySphere'));
 ```
 
-## Update params 
+or
+
+```
+var sphere = new Sphere(document.getElementById('MySphere'), {
+    sphereClass: 'circles',
+    animation: 'rotateZ'
+});
+```
+
+## Update state parameters 
 
 `sphere.updateState(stateObject);`
 
