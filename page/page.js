@@ -17,9 +17,10 @@ var Page = (function() {
             src.classList.toggle('active');
             if(id === 'SettingsForm'){
                 if(src.classList.contains('active')){
-                    sphere.sphereAnimation('stop');
+                    sphere.cache.set('animation', sphere.state.animation);
+                    sphere.sphereAnimation(null);
                 }else{
-                    sphere.sphereAnimation('play');
+                    sphere.sphereAnimation(sphere.cache.get('animation'));
                 }
             }
         };
