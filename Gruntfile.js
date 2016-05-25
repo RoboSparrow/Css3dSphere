@@ -38,6 +38,28 @@ module.exports = function(grunt) {
             }
         },
         
+        // copy files
+        copy: {
+            fontawesome: {
+                expand: true,
+                cwd: 'bower_components/fontawesome/',
+                src: [
+                    'css/font-awesome.min.css',
+                    'fonts/*.*'
+                ],
+                dest: 'page/vendor/fontawesome/'
+            },
+            pure: {
+                expand: true,
+                cwd: 'bower_components/pure/',
+                src: [
+                    'pure-min.css',
+                    'grids-responsive-min.css',
+                ],
+                dest: 'page/vendor/pure/'
+            }
+        },
+        
         // jshint: specify your preferred options in 'globals'
         // http://jshint.com/docs/options/
         jshint: {
@@ -68,6 +90,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // custom tasks (mind the order of your tasks!), just comment out what you don't need
     grunt.registerTask(
@@ -75,7 +98,8 @@ module.exports = function(grunt) {
         'Compiles all of the assets and copies the files to the build directory.', [
             'jshint',
             'less',
-            'uglify'
+            'uglify',
+            'copy'
         ]
     );
 

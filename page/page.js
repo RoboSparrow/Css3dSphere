@@ -16,6 +16,7 @@ var Page = (function() {
             var src = document.getElementById(id);
             src.classList.toggle('active');
             if(id === 'SettingsForm'){
+                // hard remove animation to reset rotated axi. 
                 if(src.classList.contains('active')){
                     sphere.cache.set('animation', sphere.state.animation);
                     sphere.sphereAnimation(null);
