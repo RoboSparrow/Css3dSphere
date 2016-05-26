@@ -96,13 +96,13 @@
   border-radius: 100px;
 }
 /* courtesy https://css-tricks.com/examples/ShapesOfCSS/ */
-.moon .sphere-column {
+.moons .sphere-column {
   color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
   border-radius: 50%;
   box-shadow: 33.33333333px 0 0 0 rgba(255, 255, 255, 0.5);
 }
-.moon .column-content {
+.moons .column-content {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
 }

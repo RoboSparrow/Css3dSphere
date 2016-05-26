@@ -123,7 +123,7 @@ var Page = (function() {
             switch(action){
                 case 'reset':
                     sphere.reset();
-                    updateForms();
+                    updateForms(sphere);
                 break;
                 case 'sphereClass':
                     sphere.sphereClass(value);
