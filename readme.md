@@ -2,11 +2,11 @@
 
 * A variation of [PaulHeye's excellent segmented CSS sphere](http://paulrhayes.com/experiments/sphere/)
 
-License: MIT. Note that this is a playground and not as a serious project. Anything can change (and break). I may not provide active support and maintenace.
+License: MIT. This is an experiment and not a serious project. Anything can change (and break). I may not provide active support and maintenace.
 I appreciate however suggestions and pull requests, if you think things can be done better.
 
 ##Features:
-
+* pure Css3 and vanilla JS
 * configure basic geometry parameters
 * move, rotate sphere
 * animations
