@@ -3,15 +3,7 @@
 
 var Page = (function() {
     
-    var toggleAnimation = function(sphere){
-        // hard remove animation to reset rotated axi. 
-        if(sphere.state.animation){
-            sphere.cache.set('animation', sphere.state.animation);
-            sphere.sphereAnimation(null);
-        }else{
-            sphere.sphereAnimation(sphere.cache.get('animation'));
-        }
-    };
+    'use strict'; 
     
     /**
      * popups
@@ -26,7 +18,12 @@ var Page = (function() {
             var src = document.getElementById(id);
             src.classList.toggle('active');
             if(id === 'SettingsForm'){
-                toggleAnimation(sphere);
+                // hard remove animation to reset rotated axi. 
+                if(src.classList.contains('active')){
+                    sphere.sphereAnimation('stop');
+                }else{
+                    sphere.sphereAnimation('play');
+                }
             }
         };
         
@@ -96,6 +93,13 @@ var Page = (function() {
                 case 'updateState':
                     vals[e.target.name] = e.target.value;
                     sphere.updateState(vals);
+                break;
+                case 'sphereAnimation':
+                    val = (e.target.value) ? e.target.value: null;
+                    if(val !== '[void]'){  
+                        sphere.sphereAnimation(val);
+                        sphere.sphereAnimation('play');
+                    }
                 break;
                 case 'sphereTransforms':
                     val = parseInt(e.target.value, 10);
