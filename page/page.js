@@ -3,6 +3,16 @@
 
 var Page = (function() {
     
+    var toggleAnimation = function(sphere){
+        // hard remove animation to reset rotated axi. 
+        if(sphere.state.animation){
+            sphere.cache.set('animation', sphere.state.animation);
+            sphere.sphereAnimation(null);
+        }else{
+            sphere.sphereAnimation(sphere.cache.get('animation'));
+        }
+    };
+    
     /**
      * popups
      */  
@@ -16,13 +26,7 @@ var Page = (function() {
             var src = document.getElementById(id);
             src.classList.toggle('active');
             if(id === 'SettingsForm'){
-                // hard remove animation to reset rotated axi. 
-                if(src.classList.contains('active')){
-                    sphere.cache.set('animation', sphere.state.animation);
-                    sphere.sphereAnimation(null);
-                }else{
-                    sphere.sphereAnimation(sphere.cache.get('animation'));
-                }
+                toggleAnimation(sphere);
             }
         };
         
@@ -63,7 +67,8 @@ var Page = (function() {
         var els = document.querySelectorAll('.rotate');
         var eventCallback = function(e){
             e.preventDefault();
-        
+            
+            sphere.sphereAnimation('stop');
             var val = sphere.state[e.target.dataset.name] + parseInt(e.target.dataset.val, 10);
             sphere.sphereTransforms(e.target.dataset.name, val);
             
