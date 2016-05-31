@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         // jshint: specify your preferred options in 'globals'
         // http://jshint.com/docs/options/
         jshint: {
-            files: ['Gruntfile.js', 'lib/<%= pkg.name %>.js', 'page/**/*.js', '!page/vendor/**'],
+            files: ['Gruntfile.js', 'lib/**/*.js', '!lib/**/*.min.js', 'page/**/*.js', '!page/vendor/**', 'test/**/*.js'],
             options: {
                 jshintrc: true
             }
@@ -77,8 +77,18 @@ module.exports = function(grunt) {
                 'less', 
                 'uglify'
             ]
+        },
+        
+        // jasmine 
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                },
+                src: ['lib/Space/test/**/*.js']
+            }
         }
-
+        
     }); // end grunt.initConfig
 
     ////
@@ -91,12 +101,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
-
+    grunt.loadNpmTasks('grunt-mocha-test');
+    
     // custom tasks (mind the order of your tasks!), just comment out what you don't need
     grunt.registerTask(
         'default',
         'Compiles all of the assets and copies the files to the build directory.', [
             'jshint',
+            'mochaTest',
             'less',
             'uglify',
             'copy'

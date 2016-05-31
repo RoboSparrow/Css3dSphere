@@ -6,6 +6,7 @@
     "undef": true,
     "unused": true,
     "jquery": false,
+    "jasmine": true,
     "globals": {
         "console": true,
         "module": true,
