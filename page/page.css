@@ -121,3 +121,10 @@ a.controls-element {
     text-align: right;
   }
 }
+#NoSupport {
+  display: none;
+  width: 50%;
+  margin: 1em auto;
+  padding: 1em;
+  border: 1px solid red;
+}

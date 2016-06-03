@@ -25,6 +25,11 @@
             <div class="pure-g">
                 <div class="pure-menu pure-menu-horizontal pure-u-1 pure-u-sm-4-5">
                     <a href="#" class="pure-menu-heading pure-menu-link">Css3dSphere</a>
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item">
+                            <a data-name="flickr" data-val="" class="action pure-menu-link"><i class="fa fa-flickr" aria-hidden="true"> FlickrSphere <span id="IntervalCounter"></span></i></a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="pure-menu pure-menu-horizontal pure-u-1 pure-u-sm-1-5 sm-right">
                     <ul class="pure-menu-list">
@@ -38,7 +43,7 @@
         </nav>
         
         <main>
-
+            <div id="NoSupport"><strong>Sorry, your browser cannot render this correctly.</strong><br></div>
             <!-- sphere scene -->
             <div id="Draw3dSphere"></div>
             
@@ -96,10 +101,10 @@
                             <label>Animation</label>
                             <select data-method="sphereAnimation" name="animation" class="change">
                                 <option value="[void]" selected>Select..</option>
-                                <option value="">No Animation</option>
                                 <option value="rotateX">rotateX</option>
                                 <option value="rotateY">rotateY</option>
                                 <option value="rotateZ">rotateZ</option>
+                                <option value="">None</option>
                             </select>
                             <output for="animation"></output>
                         </div>

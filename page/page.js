@@ -44,7 +44,11 @@ var Page = (function() {
         var output;
         for(var i = 0; i < nodes.length; i++){
             if(sphere.state.hasOwnProperty(nodes[i].name)){
-                nodes[i].value = state[nodes[i].name];
+                if(nodes[i].tagName === 'SELECT'){
+                   nodes[i].selectedIndex = 0;
+                }else{
+                    nodes[i].value = state[nodes[i].name];
+                }
                 output = document.querySelector('output[for=' + nodes[i].name + ']');
                 if(output){
                     output.textContent = state[nodes[i].name];
@@ -163,6 +167,7 @@ var Page = (function() {
             els[i].addEventListener('click', eventCallback, false);
         }
     };
+ 
     
     var flickrSphere = function(sphere){
         if(typeof window.Flickr === 'undefined'){
@@ -229,13 +234,13 @@ var Page = (function() {
         
         feed();
     };
-    
+
     return {
         Init: {
             popups: popups,
             sidebarForm: sidebarForm,
             rotateControls: rotateControls,
-            columnControls: columnControls,
+            columnControls: columnControls
         },
         updateForms: updateForms,
         flickrSphere: flickrSphere
@@ -250,6 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
      */
 
     var sphere = new Sphere(document.getElementById('Draw3dSphere'), {sphereClass: 'circles'});
+    if(!sphere.ok()){
+        var nope = document.getElementById('NoSupport');
+        nope.innerHTML += ' <pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';
+        nope.style.display = 'block';
+    }
     //sphere.coordinates();
     sphere.centreContent('<h1>Css Sphere</h1>');
     
