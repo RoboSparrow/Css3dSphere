@@ -84,7 +84,6 @@ a.controls-element {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   background-color: rgba(0, 0, 0, 0.7);
   height: 0;

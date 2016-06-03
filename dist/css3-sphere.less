@@ -49,7 +49,6 @@
 // animations
 .rotateY{
     animation: rotateY 25s infinite linear;
-    -webkit-animation: rotateY 25s infinite linear;
 }
 @keyframes rotateY {
     to {
@@ -59,7 +58,6 @@
 
 .rotateX{
     animation: rotateX 25s infinite linear;
-    -webkit-animation: rotateX 25s infinite linear;
 }
 @keyframes rotateX {
     to {
@@ -69,7 +67,6 @@
 
 .rotateZ{
     animation: rotateZ 25s infinite linear;
-    -webkit-animation: rotateZ 25s infinite linear;
 }
 @keyframes rotateZ {
     to {
@@ -79,8 +76,6 @@
 
 .paused{
     animation-play-state: paused;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
 }
 
 ////
@@ -148,7 +143,7 @@
     color: @sphere-column-base-color;
     background-color: transparent;
     border-radius: 50%; 
-    box-shadow: @unit-dimension/3 0 0 0 @sphere-column-base-color; 
+    box-shadow: round(@unit-dimension/3) 0 0 0 @sphere-column-base-color; 
 }
 .moons .column-content{
     background-color: transparent;

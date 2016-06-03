@@ -12,45 +12,69 @@
   height: 100px;
   margin-top: -50px;
   margin-left: -50px;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
 .scene .container {
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width: 100%;
   height: 100%;
+  transition: -webkit-transform 1s ease-in-out 0s;
   transition: transform 1s ease-in-out 0s;
+  transition: transform 1s ease-in-out 0s, -webkit-transform 1s ease-in-out 0s;
 }
 .rotateY {
-  animation: rotateY 25s infinite linear;
   -webkit-animation: rotateY 25s infinite linear;
+          animation: rotateY 25s infinite linear;
+}
+@-webkit-keyframes rotateY {
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
 }
 @keyframes rotateY {
   to {
-    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
   }
 }
 .rotateX {
-  animation: rotateX 25s infinite linear;
   -webkit-animation: rotateX 25s infinite linear;
+          animation: rotateX 25s infinite linear;
+}
+@-webkit-keyframes rotateX {
+  to {
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+  }
 }
 @keyframes rotateX {
   to {
-    transform: rotateX(360deg);
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
   }
 }
 .rotateZ {
-  animation: rotateZ 25s infinite linear;
   -webkit-animation: rotateZ 25s infinite linear;
+          animation: rotateZ 25s infinite linear;
+}
+@-webkit-keyframes rotateZ {
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
 }
 @keyframes rotateZ {
   to {
-    transform: rotateZ(360deg);
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 .paused {
-  animation-play-state: paused;
   -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
+          animation-play-state: paused;
 }
 .sphere-column {
   position: absolute;
@@ -61,7 +85,9 @@
   width: 100%;
   background-color: transparent;
   overflow: hidden;
+  transition: -webkit-transform 1s ease-in-out 0s;
   transition: transform 1s ease-in-out 0s;
+  transition: transform 1s ease-in-out 0s, -webkit-transform 1s ease-in-out 0s;
 }
 .sphere-column .column-content {
   display: table-cell;
@@ -100,7 +126,7 @@
   color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 33.33333333px 0 0 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 33px 0 0 0 rgba(255, 255, 255, 0.5);
 }
 .moons .column-content {
   background-color: transparent;

@@ -1,5 +1,11 @@
 /* jshint node:true */
 
+var postcssProcessors = [
+    require('autoprefixer')({
+        browsers: ['last 2 versions','iOS 7']
+    })
+];
+
 module.exports = function(grunt) {
     
     grunt.initConfig({
@@ -10,7 +16,7 @@ module.exports = function(grunt) {
         uglify: {
             js: {
                 files: {
-                    'lib/<%= pkg.name %>.min.js': [ 'lib/<%= pkg.name %>.js' ]
+                    'dist/<%= pkg.name %>.min.js': [ 'src/lib/<%= pkg.name %>.js' ]
                 }
             }
         },
@@ -20,18 +26,13 @@ module.exports = function(grunt) {
                 options: {
                     paths: ['']
                 },
-                plugins: [
-                    new (require('less-plugin-autoprefix'))({
-                        browsers: ["last 2 versions"]
-                    })
-                ],
                 files: [
                     {
-                        src: ['lib/*.less', '!{fonts, variable, mixins}*.less'],
-                        dest: 'lib/<%= pkg.name %>.css',
+                        src: ['src/lib/*.less', '!{fonts, variable, mixins}*.less'],
+                        dest: 'dist/<%= pkg.name %>.css',
                     },
                     {
-                        src: ['page/**.less', '!{fonts, variable, mixins}*.less'],
+                        src: ['src/page/**.less', '!{fonts, variable, mixins}*.less'],
                         dest: 'page/page.css',
                     }
                 ]
@@ -40,6 +41,25 @@ module.exports = function(grunt) {
         
         // copy files
         copy: {
+            lib: {
+                expand: true,
+                cwd: 'src/lib/',
+                src: [
+                    '*.js',
+                    '*.css',
+                    '*.less'
+                ],
+                dest: 'dist/'
+            },
+            page: {
+                expand: true,
+                cwd: 'src/page/',
+                src: [
+                    '*.js',
+                    '*.css'
+                ],
+                dest: 'page/'
+            },
             fontawesome: {
                 expand: true,
                 cwd: 'bower_components/fontawesome/',
@@ -57,15 +77,47 @@ module.exports = function(grunt) {
                     'grids-responsive-min.css',
                 ],
                 dest: 'page/vendor/pure/'
+            },
+            vendors: {
+                expand: true,
+                cwd: 'src/page/',
+                src: 'vendor/*.js',
+                dest: 'page/'
             }
         },
         
         // jshint: specify your preferred options in 'globals'
         // http://jshint.com/docs/options/
         jshint: {
-            files: ['Gruntfile.js', 'lib/**/*.js', '!lib/**/*.min.js', 'page/**/*.js', '!page/vendor/**', 'test/**/*.js'],
+            files: ['Gruntfile.js', 'src/**/*.js', '!src/page/vendor/*.js'],
             options: {
                 jshintrc: true
+            }
+        },
+
+        // jasmine 
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                },
+                src: ['src/lib/**/test/**/*.js']
+            }
+        },
+        
+        // postcss
+        postcss: {
+            dist: {
+                options: {
+                    processors: postcssProcessors
+                },
+                src: 'dist/*.css'
+            },
+            page: {
+                options: {
+                    processors: postcssProcessors
+                },
+                src: 'page/*.css'
             }
         },
 
@@ -75,20 +127,12 @@ module.exports = function(grunt) {
             tasks: [
                 'jshint', 
                 'less', 
-                'uglify'
+                'postcss',
+                'uglify',
+                'copy',
+                'postcss'
             ]
         },
-        
-        // jasmine 
-        mochaTest: {
-            test: {
-                options: {
-                    reporter: 'spec',
-                },
-                src: ['lib/Space/test/**/*.js']
-            }
-        }
-        
     }); // end grunt.initConfig
 
     ////
@@ -102,6 +146,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-postcss');
     
     // custom tasks (mind the order of your tasks!), just comment out what you don't need
     grunt.registerTask(
@@ -111,7 +156,8 @@ module.exports = function(grunt) {
             'mochaTest',
             'less',
             'uglify',
-            'copy'
+            'copy',
+            'postcss'
         ]
     );
 

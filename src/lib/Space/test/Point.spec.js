@@ -4,7 +4,7 @@
 // !commonJS
 var vm = require('vm');
 var fs = require('fs');
-var script = fs.readFileSync('lib/Space/Point.js');
+var script = fs.readFileSync('src/lib/Space/Point.js');
 vm.runInThisContext(script);
 
 // load assertions

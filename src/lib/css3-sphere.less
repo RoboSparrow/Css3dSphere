@@ -1,0 +1,151 @@
+////
+// Variables
+////
+
+//scene
+@scene-background-color: rgb(0, 0, 0);
+@scene-foreground-color: rgb(255, 255, 255);
+
+// sphere columns
+@sphere-column-base-color: rgba(255, 255, 255, .5);
+@sphere-column-contrast-color: rgb(0, 0, 0);
+
+// width/height
+@unit-dimension:  100px;
+
+////
+// Scene
+////
+
+.scene{
+    margin: 0 auto;
+    background-color: @scene-background-color;
+    position: relative;
+    overflow: hidden;
+}
+
+////
+// Sphere
+////
+
+.scene .sphere{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @unit-dimension;
+    height: @unit-dimension;
+    margin-top: -@unit-dimension/2;
+    margin-left: -@unit-dimension/2;
+    transform-style: preserve-3d;
+}
+
+.scene .container {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out 0s;
+}
+
+// animations
+.rotateY{
+    animation: rotateY 25s infinite linear;
+}
+@keyframes rotateY {
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.rotateX{
+    animation: rotateX 25s infinite linear;
+}
+@keyframes rotateX {
+    to {
+        transform: rotateX(360deg);
+    }
+}
+
+.rotateZ{
+    animation: rotateZ 25s infinite linear;
+}
+@keyframes rotateZ {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.paused{
+    animation-play-state: paused;
+}
+
+////
+// Sphere > Columns
+////
+
+.sphere-column{
+   position: absolute;
+   display: table;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: transparent;
+   overflow: hidden;
+   transition: transform 1s ease-in-out 0s;
+}
+
+.sphere-column .column-content{
+   display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+   background-color: @sphere-column-base-color;
+   color:  @sphere-column-contrast-color;
+}
+
+////
+// Sphere > Centre
+////
+
+.sphere-centre{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: @scene-foreground-color;
+}
+.sphere-centre .centre-content{
+   display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+}
+
+////
+// Sphere > Column shapes
+////
+
+.transparent .column-content{
+   background-color: transparent;
+   color: @sphere-column-base-color;
+}
+
+.circles  .column-content{
+   border-radius: @unit-dimension;
+}
+
+/* courtesy https://css-tricks.com/examples/ShapesOfCSS/ */
+.moons .sphere-column{ 
+    color: @sphere-column-base-color;
+    background-color: transparent;
+    border-radius: 50%; 
+    box-shadow: round(@unit-dimension/3) 0 0 0 @sphere-column-base-color; 
+}
+.moons .column-content{
+    background-color: transparent;
+    color: @sphere-column-base-color;
+}
