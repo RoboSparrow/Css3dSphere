@@ -46,32 +46,70 @@
     transition: transform 1s ease-in-out 0s;
 }
 
+//// 
 // animations
+///
+
+// infinite
+
 .rotateY{
     animation: rotateY 25s infinite linear;
-}
-@keyframes rotateY {
-    to {
-        transform: rotateY(360deg);
-    }
 }
 
 .rotateX{
     animation: rotateX 25s infinite linear;
 }
+
+.rotateZ{
+    animation: rotateZ 25s infinite linear;
+}
+
+// combined with init animation
+
+.translateZ.rotateY{
+    animation: translateZ .5s ease-out, rotateY 25s .5s infinite linear;
+}
+
+// keyframes
+
+@keyframes rotateY {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
 @keyframes rotateX {
+    from {
+        transform: rotateX(0deg);
+    }
     to {
         transform: rotateX(360deg);
     }
 }
 
-.rotateZ{
-    animation: rotateZ 25s infinite linear;
-}
 @keyframes rotateZ {
+    from {
+        transform: rotateZ(0deg);
+    }
     to {
         transform: rotateZ(360deg);
     }
+}
+
+@keyframes translateZ {
+    0% {
+        transform: translateZ(-1000px);
+    }
+    70% {
+        transform: translateZ(20px);
+    }
+    100% {
+        transform: translateZ(0);
+    }
+    
 }
 
 .paused{

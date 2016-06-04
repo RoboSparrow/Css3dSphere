@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
      * Init Sphere
      */
 
-    var sphere = new Sphere(document.getElementById('Draw3dSphere'), {sphereClass: 'circles'});
+    var sphere = new Sphere(document.getElementById('Draw3dSphere'), {sphereClass: 'circles', animation: 'translateZ rotateY'});
     if(!sphere.ok()){
         var nope = document.getElementById('NoSupport');
         nope.innerHTML += ' <pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';

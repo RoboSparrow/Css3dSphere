@@ -20,7 +20,8 @@
     var Style = {
         el: null,
         props: {},
-        prefixes:  ['ms', 'Moz', 'Webkit'],
+        prefixes:  ['ms', 'Moz', 'Webkit'], //opera is now Webkit
+        
         test: function(prop){
             if(!this.el){          
                 this.el = document.createElement('div');
@@ -42,6 +43,8 @@
             
             return false; 
         },
+        
+        // ie < edge test
         supportsPreserve3d: function(){
             if(!this.test('transformStyle')){
                 return false;
@@ -52,15 +55,19 @@
             // browsers set only EUNUM (valid) values
             return typeof el.style[prop] !== 'undefined' && el.style[prop] === 'preserve-3d';
         },
+        
+        // get prefix if if exist, test fails the original prop will be returned
         prefix: function(prop){
             var test;
             if(typeof Style.props[prop] === 'undefined'){
                  test = Style.test(prop);
             }
             test = Style.props[prop];
-            return (test) ? test : prop;// if test fails the original prop will be returned
+            return (test) ? test : prop;
         }
-    };
+    }; 
+    
+    //shorthand
     var prefix = Style.prefix;
 
     var Sphere = function(wrapper, options){
@@ -79,6 +86,7 @@
                 rotateZ: 0,
                 animation: 'rotateY',
                 sphereClass: null,
+                containerClass: null,
                 poleCaps: [90, 270] //pole caps (degree) .5* PI, 1.5 * PI;
             };
         };
@@ -169,6 +177,47 @@
         return state;
     };
     
+    /**
+     * (awkward) method for crossBrowser support of classList with multiple classes
+     *  - limited supprt for classList.add|remove(class1,class2 .. n);
+     *  - dynamic method call not supported (i.e node.classList['add'])
+     */
+
+    Sphere.prototype.nodeClasses = function(node, action, classes){
+        if(!classes){
+            return false;
+        } 
+        
+        if(typeof node === 'string'){
+            node = (typeof this.nodes[node] !== 'undefined') ? this.nodes[node] : null;
+        }
+        
+        if(typeof node.classList === 'undefined'){
+           return false;
+        }
+        
+        classes = classes.split(' ');
+        for(var i = 0; i < classes.length; i++){
+            if(!classes[i]){
+                continue;
+            }
+            switch(action){
+                case 'add':
+                    node.classList.add(classes[i]);
+                break;
+                case 'remove':
+                    node.classList.remove(classes[i]);
+                break;
+                case 'toggle':
+                    node.classList.toggle(classes[i]);
+                break;
+                default:
+                    return false;
+            }
+        }
+        return node.className;
+    };
+    
     Sphere.prototype.reset = function(){
         this.state = (typeof this.cache.initState !== 'undefined') ? this.cache.initState : this.defaults();
         this.draw();
@@ -253,6 +302,7 @@
 
         this.nodes.scene.style[prefix('perspective')] = this.state.perspective + 'px';
         
+        this.containerClass();
         this.sphereClass();
         this.sphereTransforms();
         this.sphereAnimation();
@@ -340,36 +390,54 @@
         
         return true;
     };
-    
+  
     Sphere.prototype.sphereAnimation = function(animation){
-
+        
+        if(typeof animation === 'undefined'){
+            animation = this.state.animation;
+        }
+        
         if(this.state.animation && animation === 'stop'){
-            this.nodes.sphere.classList.add('paused');
+            this.nodeClasses('sphere', 'add', 'paused');
             return;
         }
         
         if(this.state.animation && animation === 'play'){
-            this.nodes.sphere.classList.remove('paused');
+            this.nodeClasses('sphere', 'remove', 'paused');
             return;
         }
         
-        if(this.state.animation){
-            this.nodes.sphere.classList.remove(this.state.animation);
+        if(animation !== this.state.animation){
+            this.nodeClasses('sphere', 'remove', this.state.animation);
         }
         
-        if(typeof animation !== 'undefined'){
-            this.state.animation = animation;
-        }
+        this.state.animation = animation;
 
         if(this.state.animation){
-            this.nodes.sphere.classList.add(this.state.animation);
+            this.nodeClasses('sphere', 'add', this.state.animation);
+        }
+      
+    };
+   
+    Sphere.prototype.containerClass = function(containerClass){
+
+        if(this.state.containerClass){
+            this.nodeClasses('container', 'remove', this.state.containerClass);
+        }  
+        
+        if(typeof containerClass !== 'undefined'){
+            this.state.containerClass = containerClass;
+        }
+        
+        if(this.state.containerClass){
+            this.nodeClasses('container', 'add', this.state.containerClass);
         }
     };
-    
+   
     Sphere.prototype.sphereClass = function(sphereClass){
 
         if(this.state.sphereClass){
-            this.nodes.sphere.classList.remove(this.state.sphereClass);
+            this.nodeClasses('sphere', 'remove', this.state.sphereClass);
         }  
         
         if(typeof sphereClass !== 'undefined'){
@@ -377,7 +445,7 @@
         }
         
         if(this.state.sphereClass){
-            this.nodes.sphere.classList.add(this.state.sphereClass);
+            this.nodeClasses('sphere', 'add', this.state.sphereClass);
         }
     };
 

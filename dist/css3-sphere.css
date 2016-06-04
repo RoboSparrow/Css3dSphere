@@ -28,48 +28,104 @@
   -webkit-animation: rotateY 25s infinite linear;
           animation: rotateY 25s infinite linear;
 }
+.rotateX {
+  -webkit-animation: rotateX 25s infinite linear;
+          animation: rotateX 25s infinite linear;
+}
+.rotateZ {
+  -webkit-animation: rotateZ 25s infinite linear;
+          animation: rotateZ 25s infinite linear;
+}
+.translateZ.rotateY {
+  -webkit-animation: translateZ 0.5s ease-out, rotateY 25s 0.5s infinite linear;
+          animation: translateZ 0.5s ease-out, rotateY 25s 0.5s infinite linear;
+}
 @-webkit-keyframes rotateY {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
   to {
     -webkit-transform: rotateY(360deg);
             transform: rotateY(360deg);
   }
 }
 @keyframes rotateY {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
   to {
     -webkit-transform: rotateY(360deg);
             transform: rotateY(360deg);
   }
 }
-.rotateX {
-  -webkit-animation: rotateX 25s infinite linear;
-          animation: rotateX 25s infinite linear;
-}
 @-webkit-keyframes rotateX {
+  from {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
   to {
     -webkit-transform: rotateX(360deg);
             transform: rotateX(360deg);
   }
 }
 @keyframes rotateX {
+  from {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
   to {
     -webkit-transform: rotateX(360deg);
             transform: rotateX(360deg);
   }
 }
-.rotateZ {
-  -webkit-animation: rotateZ 25s infinite linear;
-          animation: rotateZ 25s infinite linear;
-}
 @-webkit-keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
   to {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
   }
 }
 @keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
   to {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
+  }
+}
+@-webkit-keyframes translateZ {
+  0% {
+    -webkit-transform: translateZ(-1000px);
+            transform: translateZ(-1000px);
+  }
+  70% {
+    -webkit-transform: translateZ(20px);
+            transform: translateZ(20px);
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+  }
+}
+@keyframes translateZ {
+  0% {
+    -webkit-transform: translateZ(-1000px);
+            transform: translateZ(-1000px);
+  }
+  70% {
+    -webkit-transform: translateZ(20px);
+            transform: translateZ(20px);
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
   }
 }
 .paused {
