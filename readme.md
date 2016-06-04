@@ -6,13 +6,13 @@ License: MIT. This is an experiment and not a serious project. Anything can chan
 I appreciate however suggestions and pull requests, if you think things can be done better.
 
 ##Features:
+
 * pure Css3 and vanilla JS
 * configure basic geometry parameters
 * move, rotate sphere
+* Fallback for legacy browsers
 * animations
-* css shapes
-* insert html content in sphere segments
-* insert html content in sphere centre
+* manipulate html content in sphere segments and centre
 
 ## Browser support
 
