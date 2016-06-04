@@ -123,7 +123,7 @@ module.exports = function(grunt) {
 
         // configure watch task
         watch: {
-            files: ['<%= jshint.files %>', 'lib/*.less', 'page/**/*.less', '*.html'],
+            files: ['<%= jshint.files %>', 'src/**/*.less', '*.html'],
             tasks: [
                 'jshint', 
                 'less', 
