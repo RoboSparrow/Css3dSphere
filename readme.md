@@ -16,10 +16,9 @@ I appreciate however suggestions and pull requests, if you think things can be d
 
 ## Browser support
 
-* [See here] (http://caniuse.com/#feat=transforms3d)
+* See section *Legacy Mode* below.
 
-Modern browsers who understand es5 and css 3d transforms. 
-This will **NOT work with IE <= 11**! (no `preserve-3d` support)
+The sphere will render on modern browsers who understand es5 and [css 3d transforms](http://caniuse.com/#feat=transforms3d).
 
 ## Setup
 
@@ -68,6 +67,42 @@ var sphere = new Sphere(document.getElementById('MySphere'), {
     animation: 'rotateZ'
 });
 ```
+
+## Legacy Mode
+
+###  HTML5 checks and fallback
+
+Some simple checks for Html5 support are run on start. 
+
+* ['transform', 'transformStyle', 'transition', 'backfaceVisibility', 'perspective', 'transformStyle: preserve-3d']`
+
+The sphere will not render oif one or more of the the tests fail .(Unless you force rendering, see below).
+ou can check the state with the `this.ok()` method. Failed tests are logged in the `this.errors` array.
+
+```
+var sphere = new Sphere(document.getElementById('MySphere');
+
+if(sphere.ok()){
+    // do your manipulations
+}
+
+if(!sphere.ok()){
+    document.getElementById('my-error').innerHTML = '<pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';
+}
+```
+
+Of course you can use more sophisticated tools like [Modernizr](https://modernizr.com/):
+
+```
+var sphere = new Sphere(document.getElementById('MySphere'));
+if(<my-checks-say-yes>){
+    sphere.draw();// discard inbuilt fallback and force drawing
+}
+```
+
+### Prefixing
+
+* supported prefixes: `webkit, moz, ms` (Opera is now on Webkit)
 
 ## Update state parameters 
 
@@ -156,10 +191,11 @@ sphere.sphereTransforms('rotateZ', 30);
 ## Animate Sphere
 
 ```
-sphere.sphereAnimation(animationClass|null);
+sphere.sphereAnimation(animationClass|'pause'|'play'|null);
 ```
 
-* `animationClass`: See `css3-sphere.css` for available animation classes or define your own
+* `animationClass`: See `css3-sphere.less` or `css3-sphere.css` for animation class examples. Define your own!
+* supports multiple classes: `fist-class second-class`
 * Stop an animation by simply submitting `null`.
 
 ```
@@ -167,7 +203,16 @@ sphere.sphereAnimation('rotateX');
 sphere.sphereAnimation('rotateY');
 sphere.sphereAnimation('rotateZ');
 
-//stop
+// chain animations - see less file
+sphere.sphereAnimation('translateZ rotateY');
+
+// pause animation
+sphere.sphereAnimation('pause');
+
+// resume animation
+sphere.sphereAnimation('pause');
+
+// remove animation alltogether
 sphere.sphereAnimation(null);
 
 ```
@@ -179,6 +224,7 @@ This method attaches simply a css class to the sphere so
 `sphere.sphereClass(className);`
 
 * `className`: You can define your own classes or use those in `css3-sphere.css`
+* supports multiple classes: `fist-class second-class`
 
 ```
 // circles

@@ -418,22 +418,7 @@
         }
       
     };
-   
-    Sphere.prototype.containerClass = function(containerClass){
-
-        if(this.state.containerClass){
-            this.nodeClasses('container', 'remove', this.state.containerClass);
-        }  
-        
-        if(typeof containerClass !== 'undefined'){
-            this.state.containerClass = containerClass;
-        }
-        
-        if(this.state.containerClass){
-            this.nodeClasses('container', 'add', this.state.containerClass);
-        }
-    };
-   
+      
     Sphere.prototype.sphereClass = function(sphereClass){
 
         if(this.state.sphereClass){
@@ -446,6 +431,21 @@
         
         if(this.state.sphereClass){
             this.nodeClasses('sphere', 'add', this.state.sphereClass);
+        }
+    };
+
+    Sphere.prototype.containerClass = function(containerClass){
+
+        if(this.state.containerClass){
+            this.nodeClasses('container', 'remove', this.state.containerClass);
+        }  
+        
+        if(typeof containerClass !== 'undefined'){
+            this.state.containerClass = containerClass;
+        }
+        
+        if(this.state.containerClass){
+            this.nodeClasses('container', 'add', this.state.containerClass);
         }
     };
 

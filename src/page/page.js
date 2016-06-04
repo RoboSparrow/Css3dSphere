@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var sphere = new Sphere(document.getElementById('Draw3dSphere'), {sphereClass: 'circles', animation: 'translateZ rotateY'});
     if(!sphere.ok()){
         var nope = document.getElementById('NoSupport');
-        nope.innerHTML += ' <pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';
+        nope.innerHTML += '<pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';
         nope.style.display = 'block';
     }
     //sphere.coordinates();
