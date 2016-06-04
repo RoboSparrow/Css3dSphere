@@ -42,6 +42,16 @@
             
             return false; 
         },
+        supportsPreserve3d: function(){
+            if(!this.test('transformStyle')){
+                return false;
+            }
+            var prop = this.prefix('transformStyle');
+            var el = document.createElement('div');
+            el.style[prop] = 'preserve-3d';
+            // browsers set only EUNUM (valid) values
+            return typeof el.style[prop] !== 'undefined' && el.style[prop] === 'preserve-3d';
+        },
         prefix: function(prop){
             var test;
             if(typeof Style.props[prop] === 'undefined'){
@@ -78,13 +88,16 @@
         this.debug = false;
         this.errors = [];
         
-        var css3 = ['transform', 'transition', 'backfaceVisibility', 'perspective'];
+        var css3 = ['transform', 'transformStyle', 'transition', 'backfaceVisibility', 'perspective'];
         for(var i = 0; i < css3.length; i++){
             if(!Style.test(css3[i])){
                 this.errors.push(css3[i]);
             }
         }
-
+        if(!Style.supportsPreserve3d()){
+            this.errors.push('transformStyle: preserve-3d');
+        }
+        
         var cache = {};
         this.cache = {
             get: function(key, _default){
