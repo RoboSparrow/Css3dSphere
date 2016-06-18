@@ -127,7 +127,6 @@ module.exports = function(grunt) {
             tasks: [
                 'jshint', 
                 'less', 
-                'postcss',
                 'uglify',
                 'copy',
                 'postcss'
