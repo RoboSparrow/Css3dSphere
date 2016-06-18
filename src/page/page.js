@@ -260,14 +260,20 @@ document.addEventListener('DOMContentLoaded', function() {
         nope.innerHTML += '<pre>Missing HTML5 support: ' + sphere.errors.join(', ') + '</pre>';
         nope.style.display = 'block';
     }
-    //sphere.coordinates();
-    sphere.centreContent('<h1>Css Sphere</h1>');
-    
-    // add some content to sphere
-    var cols = sphere.state.columns - 1;
-    var content = document.querySelectorAll('.sphere-init-content');
-    for(var i = 0; i < content.length; i++){
-        sphere.columnContent(content[i], cols - i);
+  
+    // outside link
+    if(window.location.hash === '#FlickrSphere'){
+        Page.flickrSphere(sphere);
+    }else{
+        //sphere.coordinates();
+        sphere.centreContent('<h1>Css Sphere</h1>');
+        
+        // add some content to sphere
+        var cols = sphere.state.columns - 1;
+        var content = document.querySelectorAll('.sphere-init-content');
+        for(var i = 0; i < content.length; i++){
+            sphere.columnContent(content[i], cols - i);
+        }
     }
     
     /**
