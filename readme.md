@@ -4,6 +4,9 @@
 
 License: MIT. This is an experiment and not a serious project. Anything can change (and break). I may not provide active support and maintenace.
 I appreciate however suggestions and pull requests, if you think things can be done better.
+## Demo:
+
+* http://robosparrow.github.io/Css3dSphere
 
 ##Features:
 
