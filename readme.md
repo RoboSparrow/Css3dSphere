@@ -8,9 +8,9 @@ I appreciate however suggestions and pull requests, if you think things can be d
 
 * http://robosparrow.github.io/Css3dSphere
 
-##Features:
+## Features:
 
-* pure Css3 and vanilla JS
+* CSS3 and Vanilla JS
 * configure basic geometry parameters
 * move, rotate sphere
 * Fallback for legacy browsers
